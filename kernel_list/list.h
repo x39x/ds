@@ -32,7 +32,7 @@ static inline void list_add_tail(list_head *new, list_head *head) {
         __list_add(new, head->prev, head);
 }
 
-// NOTE: !!!important
+// NOTE: !!!IMPORTANT
 /*
  * size_t 是 sizeof 运算符的返回类型
  *
@@ -53,9 +53,10 @@ static inline void list_add_tail(list_head *new, list_head *head) {
 #define list_entry(ptr, type, member) container_of(ptr, type, member)
 
 // NOTE: loop
-#define list_for_each(pos, head)                                               \
-        for (pos = (head)->next; pos != (head); pos = pos->next)
 
+// pos: type * 传数据的指针
+// head type * 头指针
+// member 指针域名字
 #define list_for_each_entry(pos, head, member)                                 \
         for (pos = list_entry((head)->next, typeof(*pos), member);             \
              &pos->member != (head);                                           \
