@@ -20,26 +20,26 @@ person p;
         })
 ```
 
-1. 理解c语言结构体的内存模型
+### 1. 理解c语言结构体的内存模型
 
     结构体内的元素按顺序在内存里排列，结构体内第一个元素的地址就是结构第的地址，即 `&p==&(p.age)`
 
-2. list_head 是一条外挂链
+### 2. list_head 是一条外挂链
 
-    通过将 list_head 嵌入到结构体来使用，链表操作都在 list_head上
+    通过将 list_head 嵌入到结构体来使用，链表操作都在 list_head 上
 
     原结构体的地址可以通 offsetof 宏获取
 
     可以做到数据域与指针域分离，并达到复用效果
 
-3. offsetof 宏
+### 3. offsetof 宏
 
     假设地址 `0` 是一个 person 类型的指针，获取该指针指向 list_head 的地址，刚好就是 list_head
-    相对于结构体地址的偏移量，即 `&p` 加偏移量等于 `&(p.list)`
+     相对于结构体地址的偏移量，即 `&p` 加偏移量等于 `&(p.list)`
 
     由于这里只进行了地址计算，并没有实际解引用，所以可以正常运行
 
-4. container_of 宏
+### 4. container_of 宏
 
     通过 list_head 地址获取原结构体地址
 
@@ -48,3 +48,5 @@ person p;
 > c 语言指针步长是根据类型的，char:1 long:8
 >
 > 由于偏移量是字节数，转换为 char 指针后进行地址运算
+
+- https://www.cnblogs.com/yangguang-it/p/11667772.html
