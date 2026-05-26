@@ -9,6 +9,7 @@ Thumbs.db
 .vscode/
 .idea/
 *.sublime-*
+.nvim.lua
 
 # =====================
 # C / C++
@@ -24,6 +25,8 @@ Thumbs.db
 *.lib
 *.exp
 *.pdb
+.clangd
+main
 
 # =====================
 # Rust
